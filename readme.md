@@ -4,6 +4,10 @@ Welcome to the Axum Cinema API documentation. This API is designed to manage cin
 
 ## Installation
 
+First you need to create and connect shuttle to your project: 
+
+[See Shuttle docs](https://shuttle.rs/docs/getting-started/installation)
+
 To get started with the Axum Cinema API locally, you can use the following:
 
 Run locally:
