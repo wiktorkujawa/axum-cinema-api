@@ -1,10 +1,12 @@
 # Axum Cinema API
 
-API for cinema API
+Welcome to the Axum Cinema API documentation. This API is designed to manage cinema-related data, including movies, halls, and sessions. Built with Rust's Axum framework, it offers a fast and reliable way to integrate cinema functionalities into your applications.
 
 ## Installation
 
-Locally:
+To get started with the Axum Cinema API locally, you can use the following:
+
+Run locally:
 
 ```bash
 cargo shuttle run
@@ -14,29 +16,3 @@ Deploy:
 ```bash
 cargo shuttle deploy --allow-dirty
 ```
-
-## Usage
-
-```python
-import foobar
-
-# returns 'words'
-foobar.pluralize('word')
-
-# returns 'geese'
-foobar.pluralize('goose')
-
-# returns 'phenomenon'
-foobar.singularize('phenomena')
-```
-
-## Contributing
-
-Pull requests are welcome. For major changes, please open an issue first
-to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
-
-## License
-
-[MIT](https://choosealicense.com/licenses/mit/)
