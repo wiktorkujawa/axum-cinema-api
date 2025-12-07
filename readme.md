@@ -4,19 +4,34 @@ Welcome to the Axum Cinema API documentation. This API is designed to manage cin
 
 ## Installation
 
-First you need to create and connect shuttle to your project: 
+### Prerequisites
 
-[See Shuttle docs](https://shuttle.rs/docs/getting-started/installation)
+1. **Install Shuttle CLI** (if not already installed):
+   ```bash
+   cargo install cargo-shuttle --locked
+   ```
 
-To get started with the Axum Cinema API locally, you can use the following:
+2. **Configure Secrets**:
+   - A `Secrets.toml` file has been created in the project root
+   - Update it with your MongoDB connection string and application URL:
+     ```toml
+     MONGODB_URI = "mongodb://localhost:27017"  # or your MongoDB connection string
+     APP_URL = "http://localhost:3000"          # your frontend URL for CORS
+     ```
 
-Run locally:
+3. **Set up MongoDB**:
+   - Make sure you have MongoDB running locally, or use a MongoDB Atlas connection string
+
+### Running Locally
 
 ```bash
 cargo shuttle run
 ```
 
-Deploy: 
+### Deploying
+
 ```bash
 cargo shuttle deploy --allow-dirty
 ```
+
+For more information, see [Shuttle documentation](https://shuttle.rs/docs/getting-started/installation)

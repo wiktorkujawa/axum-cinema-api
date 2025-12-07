@@ -18,12 +18,12 @@ use controllers::{
 };
 
 mod websockets;
-use shuttle_secrets::SecretStore;
+use shuttle_runtime::{SecretStore, Secrets};
 
 use crate::websockets::{websocket_handler, SharedState};
 
 #[shuttle_runtime::main]
-async fn main(#[shuttle_secrets::Secrets] secret_store: SecretStore) -> shuttle_axum::ShuttleAxum {
+async fn main(#[Secrets] secret_store: SecretStore) -> shuttle_axum::ShuttleAxum {
     // get secret defined in `Secrets.toml` file.
     let database_url = if let Some(secret) = secret_store.get("MONGODB_URI") {
         secret
@@ -65,17 +65,17 @@ async fn main(#[shuttle_secrets::Secrets] secret_store: SecretStore) -> shuttle_
         .route("/", get(home_controller::index))
         .route("/ws", get(move |ws: WebSocketUpgrade| websocket_handler(ws, Extension(shared_cliented), shared_state.clone())))
         .route("/sessions", get(load_sessions_with_details))
-        .route("/sessions/:id", get(fetch_session_by_id))
+        .route("/sessions/{id}", get(fetch_session_by_id))
         .route("/movies", get(load_movies_with_details))
         .route("/movies", post(add_movie))
-        .route("/movies/:id", get(load_movie_with_details))
-        .route("/movies/:id", patch(update_movie))
-        .route("/movies/:id", delete(delete_movie))
+        .route("/movies/{id}", get(load_movie_with_details))
+        .route("/movies/{id}", patch(update_movie))
+        .route("/movies/{id}", delete(delete_movie))
         .route("/halls", get(load_halls_with_details))
         .route("/halls", post(add_hall))
-        .route("/halls/:id", get(load_hall_with_details))
-        .route("/halls/:id", patch(update_hall))
-        .route("/halls/:id", delete(delete_hall))
+        .route("/halls/{id}", get(load_hall_with_details))
+        .route("/halls/{id}", patch(update_hall))
+        .route("/halls/{id}", delete(delete_hall))
         .layer(
             CorsLayer::new()
                 .allow_methods([
