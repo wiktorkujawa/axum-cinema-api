@@ -30,7 +30,7 @@ impl SharedState {
         });
         let message_text = to_string(&message).unwrap_or_else(|_| "{}".to_string());
         for client in &self.clients {
-            if let Err(e) = client.send(Message::Text(message_text.clone())) {
+            if let Err(e) = client.send(Message::text(message_text.clone())) {
                 eprintln!("Failed to broadcast message: {}", e);
             }
         }
